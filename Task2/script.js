@@ -5,6 +5,7 @@ Ensure that price, quantity, and taxRate are all valid numbers. If any are inval
 
 //DOM
 let totalcost = document.getElementById("TotalCost-btn");
+let cost = document.getElementById("Cost");
 
 //Event listener
 // Since values are empty before event listener, using anonymus functions.
@@ -18,7 +19,13 @@ calculateTotalCost(price,quantity,taxRate);
 
 function calculateTotalCost(price,quantity,taxRate){
     // Evaluate if valid input
+     if(isNaN(price) || isNaN(quantity)|| isNaN(taxRate)){
+        console.log("Invalid input");
+        cost.value = "Invalid input";
+        return;
+     }
 
     //Calculate Total cost
- totalcost.value = (price * quantity) * (1 + taxRate);
+ cost.innerText = (price * quantity) * (1 + taxRate);
+ console.log(cost.value);
 }
